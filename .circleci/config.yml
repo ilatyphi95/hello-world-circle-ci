@@ -28,9 +28,10 @@ jobs:
           command: "echo hello"
 
   print-world:
+    requires:
+      - print-hello
     docker:
       - image: circleci/node:13.8.0
-    requires: [print-hello]
     steps:
       - checkout
       - run:
