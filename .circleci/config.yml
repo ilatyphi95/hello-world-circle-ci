@@ -91,4 +91,6 @@ workflows:
           requires:
             - save-hello-world-output
       - run_command
-      - repair-fail-job
+      - repair-fail-job:
+          requires:
+            - save-hello-world-output
