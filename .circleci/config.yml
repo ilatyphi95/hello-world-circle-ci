@@ -48,7 +48,7 @@ jobs:
           name: "Print Hello World"
           command: cat output.txt
 
-  fail-job:
+  repair-fail-job:
     docker:
       - image: cimg/base:stable
     steps:
@@ -57,7 +57,7 @@ jobs:
           at: .
       - run:
           name: "Print Hello World"
-          command: cat outputer.txt
+          command: cat output.txt
 
       - run:
           name: "Failure notifier"
@@ -91,4 +91,4 @@ workflows:
           requires:
             - save-hello-world-output
       - run_command
-      - fail-job
+      - repair-fail-job
