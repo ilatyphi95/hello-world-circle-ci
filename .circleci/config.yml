@@ -74,3 +74,4 @@ workflows:
       - print-saved-file:
           requires:
             - save-hello-world-output
+      - run_command
