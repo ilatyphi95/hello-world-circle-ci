@@ -39,7 +39,6 @@ jobs:
       - run:
           name: "my name"
           command: "echo hello $MY_NAME"
-      - save
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -47,7 +46,4 @@ workflows:
     jobs:
       - say-hello
       - save-hello-world-output
-      - print-world:
-          requires:
-            - print-hello
       - print-my-name
