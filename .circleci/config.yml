@@ -48,6 +48,22 @@ jobs:
           name: "Print Hello World"
           command: cat output.txt
 
+  fail-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Print Hello World"
+          command: cat outputer.txt
+
+      - run:
+          name: "Failure notifier"
+          command: "echo failure occurred"
+          when: on_fail
+
   print-my-name:
     docker:
       - image: circleci/node:13.8.0
@@ -75,3 +91,4 @@ workflows:
           requires:
             - save-hello-world-output
       - run_command
+      - fail-job
