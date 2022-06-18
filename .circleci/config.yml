@@ -31,6 +31,17 @@ jobs:
           paths:
             - output.txt
 
+  print-saved-file:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: "Print Hello World"
+          command: cat output.txt
+
   print-my-name:
     docker:
       - image: circleci/node:13.8.0
@@ -47,3 +58,6 @@ workflows:
       - say-hello
       - save-hello-world-output
       - print-my-name
+      - print-saved-file:
+          requires:
+            - save-hello-world-output
