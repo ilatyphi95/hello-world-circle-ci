@@ -25,11 +25,10 @@ jobs:
       - checkout
       - run:
           name: "Save Hello World"
-          command: |
-          echo "Hello world" > output.txt
+          command: echo Hello world > output.txt
       - persist_to_workspace:
           root: .
-          paths: 
+          paths:
             - output.txt
 
   print-my-name:
